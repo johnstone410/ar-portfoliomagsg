@@ -12,7 +12,7 @@
 			<video id="video" crossOrigin="anonymous" autoplay muted loop="true" src="Portfolio_Cover_Shoot_BTS_010419.mp4"></video>
 		</a-assets>
 		<a-marker preset="custom" type="pattern" url="marker.patt">
-			<a-video src="#video" width="5.4375" height="5" rotation="270 0 0" vidhandler></a-video>
+			<a-video src="#video" width="8" height="4" rotation="270 0 0" position="-5 3 0" vidhandler></a-video>
 		</a-marker>
 		<a-entity camera></a-entity>
 	</a-scene>
@@ -20,18 +20,20 @@
 		AFRAME.registerComponent('vidhandler', {
 		  init: function () {
 		    this.toggle = false;
-		    this.vid = document.querySelector("#video")
-		    this.vid.pause()
+		    this.vid = document.querySelector("#video");
+		    this.vid.pause();
 		},
 		tick:function(){
 		   if(this.el.object3D.visible == true){
 		     if(!this.toggle){
 		       this.toggle = true;
 		       this.vid.play();
+		       //this.vid.muted = false;
 		    }
 		  }else{
 		    this.toggle = false;
 		    this.vid.pause();
+		    //this.vid.muted = true;
 		  }
 		 }
 		});
